@@ -14,7 +14,7 @@ const Confirmation = () => {
 
   //gets latest order just posted into orders DB
   useEffect(() => {
-    fetch(`/getLatestOrder`)
+    fetch(`${process.env.REACT_APP_URI}/getLatestOrder`)
       .then((res) => res.json())
       .then((data) => {
         setOrderInfo(data.data);
@@ -26,7 +26,7 @@ const Confirmation = () => {
   }, [cart]);
 
   useEffect(() => {
-    fetch(`/getCartItems/${cart}`)
+    fetch(`${process.env.REACT_APP_URI}/getCartItems/${cart}`)
       .then((res) => res.json())
       .then((data) => {
         setCartItems(data.data);

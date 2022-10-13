@@ -20,7 +20,7 @@ const Cart = () => {
 
   //useEffect for getting items stored inside current cart collection
   useEffect(() => {
-    fetch(`/getCartItems/${cart}`)
+    fetch(`${process.env.REACT_APP_URI}/getCartItems/${cart}`)
       .then((res) => res.json())
       .then((data) => {
         setCartItems(data.data);
@@ -31,24 +31,10 @@ const Cart = () => {
       });
   }, [remove, postedItem]);
 
-  //handler for updating stock
-  // const handleUpdate = () => {
-  //   fetch("/getUpdateCart", {
-  //     method: "PATCH",
-  //     body: JSON.stringify({
-  //       items: cartItems,
-  //       cartId: cart,
-  //     }),
-  //     headers: { "Content-Type": "application/json" },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
-  //handler for deleting specific item onClick
+  console.log(process.env.REACT_APP_URI);
+
   const handleDelete = (specificItem) => {
-    fetch(`/deleteItemFromCart`, {
+    fetch(`${process.env.REACT_APP_URI}/deleteItemFromCart`, {
       method: "DELETE",
       body: JSON.stringify({
         ...specificItem,

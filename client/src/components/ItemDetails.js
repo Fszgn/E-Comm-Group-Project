@@ -16,7 +16,7 @@ const ItemDetails = () => {
 
   //fetch to specific item id.
   useEffect(() => {
-    fetch(`/getItem/${itemId}`)
+    fetch(`${process.env.REACT_APP_URI}/getItem/${itemId}`)
       .then((res) => res.json())
       .then((data) => {
         setItem(data.data);
@@ -30,7 +30,7 @@ const ItemDetails = () => {
 
   const handleClick = () => {
     nav("/cart");
-    fetch("/addItemToCart", {
+    fetch(`${process.env.REACT_APP_URI}/addItemToCart`, {
       method: "POST",
       body: JSON.stringify({
         ...item,
